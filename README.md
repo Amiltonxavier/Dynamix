@@ -7,7 +7,7 @@
 
 <div align="center">
   <h1>Dynamix</h1>
-  <p><strong>Construtor de Formularios Dinamicos</strong></p>
+  <p><strong>Construtor de Formulários Dinâmicos</strong></p>
   <p>
     <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript">
     <img alt="React" src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react">
@@ -19,46 +19,46 @@
 
 ---
 
-## Visao Geral
+## Visão Geral
 
-**Dynamix** e uma aplicacao web moderna para criacao, edicao e visualizacao de formularios dinamicos. Com uma interface limpa e responsiva, permite que desenvolvedores e analistas construam formularios complexos sem escrever uma linha de codigo HTML.
+**Dynamix** é uma aplicação web moderna para criação, edição e visualização de formulários dinâmicos. Com uma interface limpa e responsiva, permite que desenvolvedores e analistas construam formulários complexos sem escrever uma linha de código HTML.
 
-O painel esquerdo concentra as ferramentas de construcao (adicionar campos, importar JSON), enquanto o painel direito exibe a pre-visualizacao ao vivo do formulario e a lista de campos cadastrados com suporte a arrastar e soltar.
+O painel esquerdo concentra as ferramentas de construção (adicionar campos, importar JSON), enquanto o painel direito exibe a pré-visualização ao vivo do formulário e a lista de campos cadastrados com suporte a arrastar e soltar.
 
 ---
 
 ## Funcionalidades
 
 ### Construtor Visual de Campos
-- Adicione campos de diversos tipos: texto, email, senha, numero, telefone, data, select, radio, checkbox e textarea
-- Configure label, placeholder, valor padrao, validacoes (min/max length, min/max value, regex)
-- Defina opcoes personalizadas para campos do tipo select e radio
-- Marque campos como obrigatorios ou opcionais
+- Adicione campos de diversos tipos: texto, email, senha, número, telefone, data, select, radio, checkbox e textarea
+- Configure label, placeholder, valor padrão, validações (min/max length, min/max value, regex)
+- Defina opções personalizadas para campos do tipo select e radio
+- Marque campos como obrigatórios ou opcionais
 
-### Reordenacao Drag & Drop
+### Reordenação Drag & Drop
 - Reordenar campos na tabela via arrastar e soltar com @dnd-kit
 - Feedback visual durante o arrasto com opacidade e cursor personalizado
 
-### Importacao de Campos via JSON
+### Importação de Campos via JSON
 - Importe lotes de campos usando um JSON estruturado
-- Dois modos de importacao: adicionar (append) ou substituir (replace)
-- Validacao contra schema Zod com feedback visual (verde/vermelho)
-- Pre-visualizacao dos campos parsed antes de importar
-- Accordion com formato esperado e lista de campos obrigatorios/opcionais
+- Dois modos de importação: adicionar (append) ou substituir (replace)
+- Validação contra schema Zod com feedback visual (verde/vermelho)
+- Pré-visualização dos campos parsed antes de importar
+- Accordion com formato esperado e lista de campos obrigatórios/opcionais
 
-### Edicao e Exclusao
+### Edição e Exclusão
 - Edite qualquer campo existente via modal dedicado com os mesmos campos do construtor
-- Exclua campos individualmente com botao de acao
-- Limpar tudo com confirmacao para remover todos os campos de uma vez
+- Exclua campos individualmente com botão de ação
+- Limpar tudo com confirmação para remover todos os campos de uma vez
 
-### Pre-visualizacao em Tempo Real
-- O formulario e renderizado ao vivo no painel direito
-- Validacao dinamica com Zod + react-hook-form
+### Pré-visualização em Tempo Real
+- O formulário é renderizado ao vivo no painel direito
+- Validação dinâmica com Zod + react-hook-form
 - Mensagens de erro exibidas abaixo de cada campo
-- Suporte a campos com dependencia (ex.: pais -> cidades) com loading simulado
+- Suporte a campos com dependência (ex.: país -> cidades) com loading simulado
 
-### Visualizacao em Tabela / JSON
-- Alterne entre visualizacao Tabela (com drag-and-drop) e JSON (codigo formatado)
+### Visualização em Tabela / JSON
+- Alterne entre visualização Tabela (com drag-and-drop) e JSON (código formatado)
 - Badge com contagem total de campos
 - Chips coloridos para identificar o tipo de cada campo
 
@@ -71,26 +71,26 @@ O painel esquerdo concentra as ferramentas de construcao (adicionar campos, impo
 
 ## Screenshots
 
-| Construtor e Pre-visualizacao | Lista de Campos com Drag & Drop | Importacao JSON |
+| Construtor e Pré-visualização | Lista de Campos com Drag & Drop | Importação JSON |
 |---|---|---|
 | ![Screenshot 1](public/1.png) | ![Screenshot 2](public/2.png) | ![Screenshot 3](public/3.png) |
 
-## Demonstracao em Video
+## Demonstração em Vídeo
 
-[veja o video de demonstracao](public/preview_app.webm)
+[Veja o vídeo de demonstração](public/preview_app.webm)
 
 ---
 
 ## Tecnologias
 
-| Categoria | Tecnologia | Versao |
+| Categoria | Tecnologia | Versão |
 |---|---|---|
 | Linguagem | TypeScript | 6.0 |
 | Framework | React | 19 |
 | Bundler | Vite | 8 |
-| Validacao | Zod | 4 |
-| Formularios | react-hook-form | 7 |
-| Estilizacao | styled-components | 6 |
+| Validação | Zod | 4 |
+| Formulários | react-hook-form | 7 |
+| Estilização | styled-components | 6 |
 | Drag & Drop | @dnd-kit | core/sortable/utilities |
 | Design Tokens | Stitch | -- |
 
@@ -102,31 +102,31 @@ O painel esquerdo concentra as ferramentas de construcao (adicionar campos, impo
 src/
   types/              Interfaces e tipos (FormField, FieldOption, etc.)
     form.ts
-  constants/          Dados estaticos (FIELD_TYPES, INITIAL_FIELDS, CITY_DB)
+  constants/          Dados estáticos (FIELD_TYPES, INITIAL_FIELDS, CITY_DB)
     fields.ts
-  schemas/            Schemas Zod para validacao
-    fieldSchema.ts        Schema do formulario de adicionar campo
-    dynamicFieldSchema.ts Schema dinamico gerado a partir dos campos
-    importFieldSchema.ts  Schema para validacao de JSON importado
-  hooks/              Logica de estado
+  schemas/            Schemas Zod para validação
+    fieldSchema.ts        Schema do formulário de adicionar campo
+    dynamicFieldSchema.ts Schema dinâmico gerado a partir dos campos
+    importFieldSchema.ts  Schema para validação de JSON importado
+  hooks/              Lógica de estado
     useDynamicForm.ts     Hook principal (CRUD, reorder, import)
-  components/         Componentes React
-    FieldBuilder.tsx      Formulario para adicionar novos campos
+  componentes/        Componentes React
+    FieldBuilder.tsx      Formulário para adicionar novos campos
     FieldRenderer.tsx     Renderiza cada campo no preview
-    DynamicForm.tsx       Formulario dinamico com validacao
+    DynamicForm.tsx       Formulário dinâmico com validação
     FieldList.tsx         Tabela com drag-and-drop e toggle JSON
-    FieldEditDialog.tsx   Modal de edicao de campo
-    FieldImportDialog.tsx Modal de importacao JSON
+    FieldEditDialog.tsx   Modal de edição de campo
+    FieldImportDialog.tsx Modal de importação JSON
   styles.ts           Design tokens e styled-components
   App.tsx             Orquestrador principal
 ```
 
-### Principios
+### Princípios
 
 - SOLID: tipos, constantes, schemas, hooks e componentes separados por responsabilidade
-- Nomes em ingles para variaveis, objetos e propriedades (conforme regra do projeto)
-- UI em portugues (publico-alvo brasileiro)
-- Nenhum comentario em codigo de producao
+- Nomes em inglês para variáveis, objetos e propriedades (conforme regra do projeto)
+- UI em português (público-alvo brasileiro)
+- Nenhum comentário em código de produção
 
 ---
 
@@ -141,18 +141,18 @@ npm run dev
 
 Acesse em [http://localhost:5173](http://localhost:5173)
 
-### Comandos Disponiveis
+### Comandos Disponíveis
 
-| Comando | Descricao |
+| Comando | Descrição |
 |---|---|
 | `npm run dev` | Inicia servidor de desenvolvimento Vite |
-| `npm run build` | Compila TypeScript e faz o bundle de producao |
-| `npm run preview` | Pre-visualiza o build de producao |
+| `npm run build` | Compila TypeScript e faz o bundle de produção |
+| `npm run preview` | Pré-visualiza o build de produção |
 | `npm run lint` | Executa ESLint no projeto |
 
 ---
 
-## Estrutura de Dados - Import JSON
+## Estrutura de Dados — Import JSON
 
 ```json
 [
@@ -168,11 +168,11 @@ Acesse em [http://localhost:5173](http://localhost:5173)
 ]
 ```
 
-**Campos obrigatorios:** `label`, `type`, `required`
+**Campos obrigatórios:** `label`, `type`, `required`
 **Campos opcionais:** `id`, `default`, `placeholder`, `minLength`, `maxLength`, `min`, `max`, `pattern`, `options`, `name`, `dependsOn`, `disabled`
 
 ---
 
-## Licenca
+## Licença
 
-Distribuido sob a licenca MIT. Veja `LICENSE` para mais informacoes.
+Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
