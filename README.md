@@ -91,7 +91,6 @@ O painel esquerdo concentra as ferramentas de construção (adicionar campos, im
 | Formulários | react-hook-form | 7 |
 | Estilização | styled-components | 6 |
 | Drag & Drop | @dnd-kit | core/sortable/utilities |
-| Design Tokens | Stitch | -- |
 
 ---
 
