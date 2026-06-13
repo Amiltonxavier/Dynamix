@@ -167,7 +167,7 @@ Acesse em [http://localhost:5173](http://localhost:5173)
 ```
 
 **Campos obrigatórios:** `label`, `type`, `required`
-**Campos opcionais:** `id`, `default`, `placeholder`, `minLength`, `maxLength`, `min`, `max`, `pattern`, `options`, `name`, `dependsOn`, `disabled`
+**Campos opcionais:** `id`, `isArray`, `default`, `placeholder`, `minLength`, `maxLength`, `min`, `max`, `pattern`, `options`, `name`, `dependsOn`, `disabled`
 
 ---
 

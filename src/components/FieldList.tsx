@@ -42,6 +42,7 @@ interface FieldListProps {
     type: string
     placeholder?: string
     required: boolean
+    isArray?: boolean
     defaultValue?: string
     minLength?: number
     maxLength?: number
@@ -92,7 +93,20 @@ function SortableRow({
         </span>
       </Td>
       <Td style={{ fontWeight: 600 }}>{field.label}</Td>
-      <Td><TypeChip>{field.type}</TypeChip></Td>
+      <Td>
+        <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+          <TypeChip>{field.type}</TypeChip>
+          {field.isArray && (
+            <span style={{
+              fontSize: 10, fontWeight: 700, padding: '1px 6px',
+              borderRadius: 4, background: '#e0e7ff', color: '#3730a3',
+              textTransform: 'uppercase', letterSpacing: '0.03em',
+            }}>
+              Coleção
+            </span>
+          )}
+        </div>
+      </Td>
       <Td style={{ textAlign: 'center' }}>
         <RequiredBadge $required={field.required}>
           {field.required ? 'Sim' : 'Não'}

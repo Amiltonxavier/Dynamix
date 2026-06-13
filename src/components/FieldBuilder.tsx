@@ -19,20 +19,23 @@ import {
   Row,
 } from '../styles'
 
+export interface FieldData {
+  label: string
+  type: string
+  placeholder?: string
+  required: boolean
+  isArray?: boolean
+  defaultValue?: string
+  minLength?: number
+  maxLength?: number
+  min?: number
+  max?: number
+  pattern?: string
+  options?: FieldOption[]
+}
+
 interface FieldBuilderProps {
-  onAddField: (data: {
-    label: string
-    type: string
-    placeholder?: string
-    required: boolean
-    defaultValue?: string
-    minLength?: number
-    maxLength?: number
-    min?: number
-    max?: number
-    pattern?: string
-    options?: FieldOption[]
-  }) => void
+  onAddField: (data: FieldData) => void
   onImport: (json: string, mode: 'replace' | 'append') => void
 }
 
@@ -68,6 +71,7 @@ export function FieldBuilder({ onAddField, onImport }: FieldBuilderProps) {
       type: data.type,
       placeholder: data.placeholder || undefined,
       required: data.required ?? false,
+      isArray: data.isArray ?? false,
       defaultValue: data.defaultValue || undefined,
       minLength: data.minLength ? Number(data.minLength) : undefined,
       maxLength: data.maxLength ? Number(data.maxLength) : undefined,
@@ -126,10 +130,16 @@ export function FieldBuilder({ onAddField, onImport }: FieldBuilderProps) {
           {errors.placeholder && <ErrorText>{errors.placeholder.message}</ErrorText>}
         </FormGroup>
 
-        <CheckboxWrapper>
-          <input type="checkbox" id="newFieldRequired" {...register('required')} />
-          <Label htmlFor="newFieldRequired" style={{ margin: 0 }}>Campo obrigatório</Label>
-        </CheckboxWrapper>
+        <div style={{ display: 'flex', gap: 24 }}>
+          <CheckboxWrapper>
+            <input type="checkbox" id="newFieldRequired" {...register('required')} />
+            <Label htmlFor="newFieldRequired" style={{ margin: 0 }}>Campo obrigatório</Label>
+          </CheckboxWrapper>
+          <CheckboxWrapper>
+            <input type="checkbox" id="newFieldIsArray" {...register('isArray')} />
+            <Label htmlFor="newFieldIsArray" style={{ margin: 0 }}>Coleção (múltiplos valores)</Label>
+          </CheckboxWrapper>
+        </div>
 
         <FormGroup>
           <Label htmlFor="newFieldDefault">Valor padrão (opcional)</Label>

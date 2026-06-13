@@ -30,6 +30,7 @@ interface FieldEditDialogProps {
     type: string
     placeholder?: string
     required: boolean
+    isArray?: boolean
     defaultValue?: string
     minLength?: number
     maxLength?: number
@@ -64,6 +65,7 @@ export function FieldEditDialog({ field, onSave, onClose }: FieldEditDialogProps
       type: field.type,
       placeholder: field.placeholder ?? '',
       required: field.required,
+      isArray: field.isArray ?? false,
       defaultValue: typeof field.default === 'string' ? field.default : '',
       minLength: field.minLength?.toString() ?? '',
       maxLength: field.maxLength?.toString() ?? '',
@@ -88,6 +90,7 @@ export function FieldEditDialog({ field, onSave, onClose }: FieldEditDialogProps
       type: data.type,
       placeholder: data.placeholder || undefined,
       required: data.required ?? false,
+      isArray: data.isArray ?? false,
       defaultValue: data.defaultValue || undefined,
       minLength: data.minLength ? Number(data.minLength) : undefined,
       maxLength: data.maxLength ? Number(data.maxLength) : undefined,
@@ -144,10 +147,16 @@ export function FieldEditDialog({ field, onSave, onClose }: FieldEditDialogProps
               {errors.placeholder && <ErrorText>{errors.placeholder.message}</ErrorText>}
             </FormGroup>
 
-            <CheckboxWrapper>
-              <input type="checkbox" id="editFieldRequired" {...register('required')} />
-              <Label htmlFor="editFieldRequired" style={{ margin: 0 }}>Campo obrigatório</Label>
-            </CheckboxWrapper>
+            <div style={{ display: 'flex', gap: 24 }}>
+              <CheckboxWrapper>
+                <input type="checkbox" id="editFieldRequired" {...register('required')} />
+                <Label htmlFor="editFieldRequired" style={{ margin: 0 }}>Campo obrigatório</Label>
+              </CheckboxWrapper>
+              <CheckboxWrapper>
+                <input type="checkbox" id="editFieldIsArray" {...register('isArray')} />
+                <Label htmlFor="editFieldIsArray" style={{ margin: 0 }}>Coleção (múltiplos valores)</Label>
+              </CheckboxWrapper>
+            </div>
 
             <FormGroup>
               <Label htmlFor="editFieldDefault">Valor padrão (opcional)</Label>

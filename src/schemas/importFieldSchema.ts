@@ -5,6 +5,7 @@ export const importedFieldSchema = z.object({
   type: z.string().min(1, 'type é obrigatório'),
   required: z.boolean(),
   id: z.number().int().positive().optional(),
+  isArray: z.boolean().optional(),
   default: z.union([z.string(), z.number(), z.boolean()]).optional(),
   placeholder: z.string().optional(),
   minLength: z.number().int().positive().optional(),

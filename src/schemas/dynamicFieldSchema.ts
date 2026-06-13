@@ -23,25 +23,44 @@ export function generateFieldSchema(fields: FormField[]) {
       continue
     }
 
-    let s = z.string()
+    if (field.type === 'file') {
+      if (field.isArray) {
+        let arr = z.array(z.any())
+        if (field.required) arr = arr.min(1, 'Adicione ao menos um arquivo')
+        shape[key] = arr
+      } else {
+        let s: z.ZodTypeAny = z.any()
+        if (field.required) s = s.refine((v: unknown) => v instanceof File, 'Selecione um arquivo')
+        shape[key] = s
+      }
+      continue
+    }
+
+    let base = z.string()
 
     if (field.type === 'email') {
-      s = s.email('E-mail inválido')
+      base = base.email('E-mail inválido')
     }
     if (field.minLength) {
-      s = s.min(field.minLength, `Mínimo ${field.minLength} caracteres`)
+      base = base.min(field.minLength, `Mínimo ${field.minLength} caracteres`)
     }
     if (field.maxLength) {
-      s = s.max(field.maxLength, `Máximo ${field.maxLength} caracteres`)
+      base = base.max(field.maxLength, `Máximo ${field.maxLength} caracteres`)
     }
     if (field.pattern) {
-      s = s.regex(new RegExp(field.pattern), 'Formato inválido')
+      base = base.regex(new RegExp(field.pattern), 'Formato inválido')
     }
     if (field.required) {
-      s = s.min(1, 'Campo obrigatório')
+      base = base.min(1, 'Campo obrigatório')
     }
 
-    shape[key] = s
+    if (field.isArray) {
+      let arr = z.array(base)
+      if (field.required) arr = arr.min(1, 'Adicione ao menos um item')
+      shape[key] = arr
+    } else {
+      shape[key] = base
+    }
   }
 
   return z.object(shape)

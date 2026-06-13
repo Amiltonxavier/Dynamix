@@ -3,6 +3,7 @@ import type { FieldOption, FormField } from '../types/form'
 export const FIELD_TYPES: { value: string; label: string }[] = [
   { value: 'text', label: 'Texto' },
   { value: 'number', label: 'Número' },
+  { value: 'file', label: 'Arquivo' },
   { value: 'email', label: 'E-mail' },
   { value: 'password', label: 'Senha' },
   { value: 'tel', label: 'Telefone' },

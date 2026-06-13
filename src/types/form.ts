@@ -10,6 +10,7 @@ export interface FormField {
   default: string | number | boolean
   type: string
   required: boolean
+  isArray?: boolean
   placeholder?: string
   minLength?: number
   maxLength?: number

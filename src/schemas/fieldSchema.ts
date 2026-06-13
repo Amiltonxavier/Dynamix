@@ -5,6 +5,7 @@ export const newFieldSchema = z.object({
   type: z.string().min(1, 'O tipo do campo é obrigatório'),
   placeholder: z.string().max(100, 'Máximo 100 caracteres').optional().or(z.literal('')),
   required: z.boolean().optional(),
+  isArray: z.boolean().optional(),
   defaultValue: z.string().optional().or(z.literal('')),
   minLength: z.string().optional().or(z.literal('')),
   maxLength: z.string().optional().or(z.literal('')),

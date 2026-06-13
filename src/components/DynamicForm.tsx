@@ -22,12 +22,14 @@ export function DynamicForm({ fields, countryLoading, onFieldChange }: DynamicFo
         `field-${f.id}`,
         f.type === 'checkbox' ? !!f.default
           : f.type === 'number' ? (f.default ? Number(f.default) : undefined)
-            : (f.default as string ?? ''),
+            : f.type === 'file' ? (f.isArray ? [] : null)
+              : f.isArray ? [] : (f.default as string ?? ''),
       ]),
     ),
   })
 
   const onSubmit = methods.handleSubmit(data => {
+    console.log('Form Data:', data)
     alert('Formulário enviado com sucesso!\n' + JSON.stringify(data, null, 2))
   })
 

@@ -60,6 +60,7 @@ export function useDynamicForm() {
       type: string
       placeholder?: string
       required: boolean
+      isArray?: boolean
       defaultValue?: string
       minLength?: number
       maxLength?: number
@@ -74,6 +75,7 @@ export function useDynamicForm() {
         default: data.type === 'checkbox' ? false : (data.defaultValue ?? ''),
         type: data.type,
         required: data.required,
+        ...(data.isArray && { isArray: true }),
         ...(data.placeholder && { placeholder: data.placeholder }),
         ...(data.minLength !== undefined && { minLength: data.minLength }),
         ...(data.maxLength !== undefined && { maxLength: data.maxLength }),
@@ -94,6 +96,7 @@ export function useDynamicForm() {
       type: string
       placeholder?: string
       required: boolean
+      isArray?: boolean
       defaultValue?: string
       minLength?: number
       maxLength?: number
@@ -111,6 +114,7 @@ export function useDynamicForm() {
                 type: data.type,
                 required: data.required,
                 default: data.type === 'checkbox' ? false : (data.defaultValue ?? ''),
+                isArray: data.isArray ?? false,
                 ...(data.placeholder && { placeholder: data.placeholder }),
                 ...(data.minLength !== undefined ? { minLength: data.minLength } : { minLength: undefined }),
                 ...(data.maxLength !== undefined ? { maxLength: data.maxLength } : { maxLength: undefined }),
@@ -138,6 +142,7 @@ export function useDynamicForm() {
         type: item.type,
         required: item.required,
         default: item.default ?? (item.type === 'checkbox' ? false : ''),
+        ...(item.isArray && { isArray: true }),
         ...(item.placeholder && { placeholder: item.placeholder }),
         ...(item.minLength !== undefined && { minLength: item.minLength }),
         ...(item.maxLength !== undefined && { maxLength: item.maxLength }),
