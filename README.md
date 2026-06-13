@@ -64,7 +64,6 @@ O painel esquerdo concentra as ferramentas de construção (adicionar campos, im
 
 ### Design System
 - Tema com paleta de cores, tipografia (Manrope + Inter) e cantos arredondados consistentes
-- Sistema de design gerenciado via Stitch, com tokens centralizados em styled-components
 - Modal, Overlay, Tabs, Cards, Badges e todos os elementos seguem o mesmo guia de estilo
 
 ---
